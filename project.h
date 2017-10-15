@@ -24,11 +24,24 @@ public:
 	Date & operator=(const Date & D);
 	friend std::ostream & operator<<(std:: ostream & os, const Date & D);
 // Interfejs???
-
-
+// DateFormatter- Interfejs , tzn. klasa posiadaj¹ca tylko i wy³¹cznie metody wirtualne
+// ComputerDateFormatter i GermanDateFormatter-  klasy implementuj¹ce  interfejs tzn.  dziedzicz¹ce publicznie interfejs
 
 };
 
+class DateFormatter
+{
 
+};
+
+class ComputerDateFormatter : public(DateFormatter)
+{
+
+};
+
+class GermanDateFormatter : public(DateFormatter)
+{
+
+};
 
 #endif
