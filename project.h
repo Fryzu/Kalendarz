@@ -1,4 +1,4 @@
-//PROPONOWANY SZABLON KLAS W NASZYM PROJEKCIE XD
+//PROPONOWANY SZABLON KLAS W NASZYM PROJEKCIE
 
 #include <iostream>
 #ifndef KAL_H
@@ -8,6 +8,7 @@ class Date
 {
 private:
 	unsigned int unixTime;
+	DateFormatter:: DateFormatter *format;
 
 public:
 	Date(int year,int month,int day);
@@ -23,24 +24,33 @@ public:
 	bool operator!=(const Date & D);
 	Date & operator=(const Date & D);
 	friend std::ostream & operator<<(std:: ostream & os, const Date & D);
+	void ZmianaFormatu(DateFormatter * format);
+	ostream & Wypisz(DateFormatter & format) const ;
+	{
+        format->os(unixTime);
+	}
 // Interfejs???
-// DateFormatter- Interfejs , tzn. klasa posiadaj¹ca tylko i wy³¹cznie metody wirtualne
-// ComputerDateFormatter i GermanDateFormatter-  klasy implementuj¹ce  interfejs tzn.  dziedzicz¹ce publicznie interfejs
+// DateFormatter- Interfejs , tzn. klasa posiadajÂ¹ca tylko i wyÂ³Â¹cznie metody wirtualne i Å¼adnych pÃ³l
+// ComputerDateFormatter i GermanDateFormatter-  klasy implementujÂ¹ce  interfejs tzn.  dziedziczÂ¹ce publicznie interfejs
 
 };
 
 class DateFormatter
 {
-
+public:
+  std:: ostream & os( unsigned int ) const =0;
 };
 
 class ComputerDateFormatter : public(DateFormatter)
 {
-
+    public:
+    std:: ostream & os(unsigned int) const;
 };
 
 class GermanDateFormatter : public(DateFormatter)
 {
+public:
+    std::ostream & os (unsigned int) const;
 
 };
 
