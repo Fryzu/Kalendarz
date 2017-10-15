@@ -1,0 +1,29 @@
+Zadanie – Kalendarz
+
+W ramach tego zadania stworzysz moduł służący do obsługi kalendarza “ery komputerowej” (czyli dat począwszy od 1970-01-01), który będzie wykorzystywany w aplikacjach przeznaczonych dla odbiorców w różnych krajach (głównie w Niemczech).
+
+Moduł powinien udostępniać następującą funkcjonalność:
+
+    możliwość tworzenia obiektów typu Date, służących do obsługi daty dziennej
+        domyślnie data 1970-01-01 (początek epoki)
+        możliwość podania daty (za pomocą zmiennych określających rok, miesiąc i dzień)
+    możliwość wykonywania operacji arytmetycznych na datach (gdzie D
+
+– zmienna typu Data, n
+– liczba dni):
+
+    D+n
+
+, D−n oraz n+D
+(np. 2017-09-30 + 2 = 2017-10-02); również D += n, D -= n
+D1−D2
+
+        – zwraca różnicę w dniach pomiędzy datami (np. 2017-09-30 - 2017-10-02 = -2)
+    możliwość porównywania dwóch dat (relacje ==, !=)
+    możliwość tworzenia obiektów typu Date za pomocą mechanizmu kopiowania (d2 = Date(d1))
+    wypisywanie daty (za pomocą operatora wyjścia <<) w formacie komputerowym (YYYY-MM-DD); w przypadku daty sprzed początku epoki powinien zostać wypisany stosowny komunikat
+    interfejs1) DateFormatter wraz z implementującymi2) go klasami ComputerDateFormatter oraz GermanDateFormatter do wyświetlania dat w formacie:
+        komputerowym (YYYY-MM-DD, np. 2017-02-28)
+        niemieckim (DD.MM.YYYY, np. 28.02.2017)
+
+Dla uproszczenia przyjmij, że nie istnieją lata przestępne – każdy rok ma 365 dni, każdy luty ma 28 dni ;-) 
