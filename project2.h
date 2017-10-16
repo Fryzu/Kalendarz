@@ -28,7 +28,7 @@ class Date
 class DateFormatter // nie wiem do końca po co - może nie o to chodziło
 {
     public:
-        virtual String format(Date& date);
+        virtual String format(Date& date) = 0;
 };
 
 class ComputerDateFormatter : public(DateFormatter)
