@@ -30,19 +30,19 @@ class Date
 class DateFormatter // nie wiem do końca po co - może nie o to chodziło
 {
     public:
-        virtual String format(Date& date) = 0;
+        virtual string format(Date& date) = 0;
 };
 
-class ComputerDateFormatter : public(DateFormatter)
+class ComputerDateFormatter : public DateFormatter
 {
     public:
-        virtual String format(Date& date); //Fryzu
+        virtual string format(Date& date); //Fryzu
 };
 
-class GermanDateFormatter : public(DateFormatter)
+class GermanDateFormatter : public DateFormatter
 {
     public:
-        virtual String format(Date& date); //Pietro
+        virtual string format(Date& date); //Pietro
 };
 
 //ComputerDateFormatter cdf;
