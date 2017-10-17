@@ -1,13 +1,16 @@
 //PROPONOWANY PRZEZE MNIE SZABLON KLAS - Bartek
 
-#include <iostream>
 #ifndef DATE_H
 #define DATE_H
+
+#include <iostream>
 
 class Date
 {
     private:
         unsigned int unixTime;
+	static const int month[12] = {31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334, 365};
+
 
     public:
         Date(int year,int month,int day);
@@ -17,9 +20,9 @@ class Date
         Date& operator-=(const int);
         Date& operator=(const Date&);
 
-        friend const Date operator+(int, Date&); //n+D
-        friend const Date operator+(Date&, int); //D+n
-        friend const Date operator-(Date&, int); //D-n
+        friend const Date operator+(int, const Date&); //n+D
+        friend const Date operator+(const Date&, int); //D+n
+        friend const Date operator-(const Date&, int); //D-n
         friend bool operator==(const Date&, const Date&);
         friend bool operator!=(const Date&, const Date&);
         friend std::ostream& operator<<(std::ostream&, const Date&);
