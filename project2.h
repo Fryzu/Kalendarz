@@ -12,20 +12,19 @@ class Date
 	static const int month[12] = {31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334, 365};
 
     public:
-        Date(int year,int month,int day);
+        Date(int year,int month,int day);//MrauMrauChan
         Date(unsigned int time = 0) : unixTime(time){};
-	Date(const Date& D);
 
-        Date& operator+=(const int);
-        Date& operator-=(const int);
-        Date& operator=(const Date&);
+        Date& operator+=(const int); //Pietro
+        Date& operator-=(const int); //Pietro
+        Date& operator=(const Date&); //Fryzu
 
-        friend const Date operator+(int, const Date&); //n+D
-        friend const Date operator+(const Date&, int); //D+n
-        friend const Date operator-(const Date&, int); //D-n
-        friend bool operator==(const Date&, const Date&);
-        friend bool operator!=(const Date&, const Date&);
-        friend std::ostream& operator<<(std::ostream&, const Date&);
+        friend const Date operator+(int, const Date&); //n+D Fryzu
+        friend const Date operator+(const Date&, int); //D+n Pietro
+        friend const Date operator-(const Date&, int); //D-n MrauMrauChan
+        friend bool operator==(const Date&, const Date&); //Pietro
+        friend bool operator!=(const Date&, const Date&); //Pietro
+        friend std::ostream& operator<<(std::ostream&, const Date&); //Fryzu
 };
 
 class DateFormatter // nie wiem do końca po co - może nie o to chodziło
@@ -37,13 +36,16 @@ class DateFormatter // nie wiem do końca po co - może nie o to chodziło
 class ComputerDateFormatter : public(DateFormatter)
 {
     public:
-        virtual String format(Date& date);
+        virtual String format(Date& date); //Fryzu
 };
 
 class GermanDateFormatter : public(DateFormatter)
 {
     public:
-        virtual String format(Date& date);
+        virtual String format(Date& date); //Pietro
 };
+
+//ComputerDateFormatter cdf;
+//cout <<< cdf.format(d) << endl;
 
 #endif
