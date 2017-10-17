@@ -14,7 +14,7 @@ class Date
     public:
         Date(int year,int month,int day);
         Date(unsigned int time = 0) : unixTime(time){};
-	Date(const Date & D);
+	Date(const Date& D);
 
         Date& operator+=(const int);
         Date& operator-=(const int);
