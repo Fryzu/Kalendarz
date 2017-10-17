@@ -11,7 +11,6 @@ class Date
         unsigned int unixTime;
 	static const int month[12] = {31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334, 365};
 
-
     public:
         Date(int year,int month,int day);
         Date(unsigned int time = 0) : unixTime(time){};
