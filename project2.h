@@ -34,13 +34,13 @@ class DateFormatter // nie wiem do końca po co - może nie o to chodziło
 class ComputerDateFormatter : public(DateFormatter)
 {
     public:
-        String format(Date& date);
+        virtual String format(Date& date);
 };
 
 class GermanDateFormatter : public(DateFormatter)
 {
     public:
-        String format(Date& date);
+        virtual String format(Date& date);
 };
 
 #endif
