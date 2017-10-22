@@ -13,6 +13,8 @@ const Date operator-(const Date& D,int n)
 {
     Date newDate;
     newDate.unixTime=D.unixTime-(n*24*60*60);
+    if (newDate.unixTime<0)
+        newDate.unixTime=0;
     return newDate;
 
 }
