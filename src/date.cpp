@@ -5,7 +5,7 @@
 
 Date& Date::operator=(const Date& toCopy)
 {
-    this->unixTime = toCopy.unixTime;
+    this->unixDays = toCopy.unixDays;
 
     return *this;
 }
@@ -13,33 +13,34 @@ Date& Date::operator=(const Date& toCopy)
 const Date operator+(int dateInteger, const Date& dateObject)
 {
     Date result;
-    result.unixTime = dateObject.unixTime + (dateInteger*86400);
+    result.unixDays = dateObject.unixDays + dateInteger;
 
     return result;
 }
 
 std::ostream& operator<<(std::ostream& os, const Date& dateObject)
 {
-    os << dateObject.unixTime << std::endl;
+    os << dateObject.unixDays << std::endl;
 
     return os;
 }
 
-  string ComputerDateFormatter::format(Date& date)
-  {
-      //NIE SKOŃCZONE
-      string result;
-      const int yearLength = 31536000; 
-      const int dayLength = 86400; 
+string ComputerDateFormatter::format(Date& date)
+{
+    string result;
+    result << date.unixDays/365 << "-";
 
-      //year
-      result << static_cast<int>(date.unixTime/yearLength);
-
-      //month
-      int x = date.unixTime % yearLength;
-
-      //day
-  }
+	int dateDays = date.unixDays % 365;
+    for(int i = 0; i < 12; i++)
+    {
+		if(dateDays < monthDate[i])
+		{
+			result << i + 1 << "-";
+			if(i == 1)	result << dateDays; 
+			else	result << dateDays - monthDate[i-1];
+		}
+    }
+}
 
 //Metody MrauMrauChan
 

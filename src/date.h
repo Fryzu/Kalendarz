@@ -9,11 +9,11 @@ class Date
 {
     private:
         unsigned int unixDays;
-	    static const int monthDate[12] = {31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334, 365};
+		static const int monthDate[12] = {31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334, 365};
 
     public:
         Date(int year,int month,int day);//MrauMrauChan
-        Date(unsigned int time = 0) : unixTime(time){};
+        Date(unsigned int time = 0) : unixDays(time-time%86400){};
 
         Date& operator+=(const int); //Pietro
         Date& operator-=(const int); //Pietro
