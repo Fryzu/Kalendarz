@@ -65,65 +65,51 @@ const Date operator-(const Date& D,int n)
 
 //Metody Pietra
 
-ate& operator+=(const int days)
+Date& Date::operator+=(const int days)
 {
-    unixTime=unixTime+86400*days;
+    unixDays=unixDays+days;
     return *this;
 }
-Date& operator-=(const int days)
+Date& Date::operator-=(const int days)
 {
-    unixTime=unixTime-86400*days;
+	unixDays=unixDays-days;
     return *this;
 }
  const Date operator+(const Date& prevDate, int days)
 {
     Date newDate;
-    newDate.unixTime=prevDate.unixTime+days;
+    newDate.unixDays=prevDate.unixDays+days;
     return newDate;
 }
-friend bool operator==(const Date& D1, const Date& D2);
+bool operator==(const Date& D1, const Date& D2);
 {
 
-    if ((D1.unixTime-D2.unixTime)>86400) return 0 //86400 to liczba sekund w ciagu dnia
-
-
-    unsigned int days1=(D1.unixTime-(D1.unixTime%86400))/86400;
-    unsigned int days2=(D2.unixTime-(D2.unixTime%86400))/86400;
-
-    if (D1.unixTime>D2.unixTime) && (D1.unixTime-days*86400<D1.unixTime-D2.unixTime) return 0;
-    if (D2.unixTime>D1.unixTime) && (D2.unixTime-days*86400>D2.unixTime-D1.unixTime) return 0;
-    return 1;
+    if (D1.unixDays!=D2.unixDays) return 0
+    else return 1
 }
-friend bool operator!=(const Date&, const Date&)
+ bool operator!=(const Date&, const Date&)
 {
-    if ((D1.unixTime-D2.unixTime)>86400) return 1 //86400 to liczba sekund w ciagu dnia
-
-
-    unsigned int days1=(D1.unixTime-(D1.unixTime%86400))/86400;
-    unsigned int days2=(D2.unixTime-(D2.unixTime%86400))/86400;
-
-    if (D1.unixTime>D2.unixTime) && (D1.unixTime-days*86400<D1.unixTime-D2.unixTime) return 1;
-    if (D2.unixTime>D1.unixTime) && (D2.unixTime-days*86400>D2.unixTime-D1.unixTime) return 1;
-    return 0;
+	    if (D1.unixDays!=D2.unixDays) return 1
+	    else return 0
 }
-class GermanDateFormatter : public DateFormatter
-{
-    public:
 
-    virtual string format(Date& date)
+
+
+string GermanDateFormatter::format(Date& date)
     {
       string result;
-      const int yearLength = 31536000;
-      const int dayLength = 86400;
+      const int yearLength = 365;
 
-    unsigned int years = ((Date.unixTime-(Date.unixTime%yearLength))/yearLength);
-
+    unsigned int years = 1970+((unixDays-unixDays%yearLength)/yearLength)
     string  year= '.'+to_string(years);
+
     int months;
+
     string month;
+
     for(int i=1;i<13;i++)
     {
-        if (date.unixTime<=monthDate[i]*dayLength)
+        if (date.unixDays-yearLength*years)<=monthDate[i])
         {
                         months=i;
                         break;
@@ -135,12 +121,11 @@ class GermanDateFormatter : public DateFormatter
     if (months<10) month='.0'+to_string(months)
             else month='.'+to_string(months);
 
-    unsigned int days=date.unixTime-(years*yearLength+monthDate[i-1]*dayLength);
+    unsigned int days=date.unixDays-((years-1970)*yearLength+monthDate[i-1]);
 
-    days=(days-days%dayLength)/dayLength+1;
     string day;
      if (days<10) day='0'+to_string(days)
-            else day=to_string(months);
+            else day=to_string(days);
     result=day+month+year;
     return result;
     }
