@@ -8,7 +8,7 @@
 class Date
 {
     private:
-        unsigned int unixTime;
+        unsigned int unixDays;
 	    static const int monthDate[12] = {31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334, 365};
 
     public:
