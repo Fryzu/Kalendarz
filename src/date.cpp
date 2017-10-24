@@ -1,15 +1,7 @@
 #include "date.h"
 #include <iostream>
 
-Date::Date(int year, int month, int day)
-{
-    int y;
-    if(month==1)
-        y=0;
-    else
-        y=month-2;
-    unixTime=((year-1970)*365+day+monthDate[y])*24*60*60;
-}
+//Metody Bartka
 
 Date& Date::operator=(const Date& toCopy)
 {
@@ -24,13 +16,6 @@ const Date operator+(int dateInteger, const Date& dateObject)
     result.unixTime = dateObject.unixTime + (dateInteger*86400);
 
     return result;
-}
-
-const Date operator-(const Date& D,int n)
-{
-    Date newDate;
-    newDate.unixTime=D.unixTime-(n*24*60*60);
-    return newDate;
 }
 
 std::ostream& operator<<(std::ostream& os, const Date& dateObject)
