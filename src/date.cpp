@@ -126,5 +126,3 @@ string GermanDateFormatter::format(Date &date)
     result = day + month + year;
     return result;
 }
-}
-;
