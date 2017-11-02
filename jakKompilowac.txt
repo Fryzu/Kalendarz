@@ -1,0 +1,10 @@
+Jak wygenerować swój własny, piękny, osobisty Makefile:
+1.  Potrzebujemy Gtestów więc https://github.com/google/googletest/releases 
+    ściągamy wersje 1.6 i wypakowujemy do głownego katalogu "Kalendarz/".
+2.  Otwieramy katalog googltestów i polecenie "cmake", a potem "make".
+3.  Tworzymy w głównym katalogu "Kalendarz/" katalog build wchodzimy do niego
+    i wykonujemy polecenie "cmake ..", a następnie "make".
+4.  W katalogu build powinniśmy mieć foldery test i src, a w środku pliki exe
+    odpowiednio testowy i zwykły.
+
+    gotowe :)
