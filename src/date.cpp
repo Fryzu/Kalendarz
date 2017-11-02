@@ -4,7 +4,7 @@
 //Metody Bartka
 
 static const int monthDate[12] = {31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334, 365};
-/*
+
 Date &Date::operator=(const Date &toCopy)
 {
     this->unixDays = toCopy.unixDays;
@@ -27,23 +27,27 @@ std::ostream &operator<<(std::ostream &os, const Date &dateObject)
     return os;
 }
 
-string ComputerDateFormatter::format(Date &date)
+std::string ComputerDateFormatter::format(Date &date)
 {
-    string result;
-    result << date.unixDays / 365 << "-";
+    std::string result;
+    result = date.getUnixDays() / 365;
+    result += "-";
 
-    int dateDays = date.unixDays % 365;
+    int dateDays = date.getUnixDays() % 365;
     for (int i = 0; i < 12; i++)
     {
         if (dateDays < monthDate[i])
         {
-            result << i + 1 << "-";
+            result += i + 1;
+            result += "-";
             if (i == 1)
-                result << dateDays;
+                result += dateDays;
             else
-                result << dateDays - monthDate[i - 1];
+                result += dateDays - monthDate[i - 1];
         }
     }
+
+    return result;
 }
 
 //Metody MrauMrauChan
@@ -85,18 +89,18 @@ const Date operator+(const Date &prevDate, int days)
     newDate.unixDays = prevDate.unixDays + days;
     return newDate;
 }
-bool operator==(const Date &D1, const Date &D2);
-{
-
-    if (D1.unixDays != D2.unixDays)
-        return 0 else return 1
-}
-bool operator!=(const Date &, const Date &)
+bool operator==(const Date &D1, const Date &D2)
 {
     if (D1.unixDays != D2.unixDays)
-        return 1 else return 0
+        return 0; else return 1;
+}
+bool operator!=(const Date &D1, const Date &D2)
+{
+    if (D1.unixDays != D2.unixDays)
+        return 1; else return 0;
 }
 
+/* coś nie smiga i nie chce sie kompilowac
 string GermanDateFormatter::format(Date &date)
 {
     string result;
@@ -107,7 +111,7 @@ string GermanDateFormatter::format(Date &date)
 
     int months;
 
-    string month;
+    std::string month;
 
     for (int i = 1; i < 13; i++)
     {
@@ -118,7 +122,9 @@ string GermanDateFormatter::format(Date &date)
             }
     }
     if (months < 10)
-        month = '.0' + to_string(months) else month = '.' + to_string(months);
+        month = '.0' + to_string(months); 
+    else 
+        month = '.' + to_string(months);
 
     unsigned int days = date.unixDays - ((years - 1970) * yearLength + monthDate[i - 1]);
 
