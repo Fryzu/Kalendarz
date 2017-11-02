@@ -9,7 +9,6 @@ class Date
 {
   private:
     unsigned int unixDays;
-    static const int monthDate[12] = {31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334, 365};
 
   public:
     Date(int year, int month, int day); //MrauMrauChan
@@ -19,6 +18,7 @@ class Date
     Date &operator-=(const int);   //Pietro
     Date &operator=(const Date &); //Fryzu
 
+    unsigned int getUnixDays() {return unixDays;}; //for tests
     friend const Date operator+(int, const Date &);                //n+D Fryzu
     friend const Date operator+(const Date &, int);                //D+n Pietro
     friend const Date operator-(const Date &, int);                //D-n MrauMrauChan
@@ -30,19 +30,19 @@ class Date
 class DateFormatter // nie wiem do końca po co - może nie o to chodziło
 {
   public:
-    virtual string format(Date &date) = 0;
+    virtual std::string format(Date &date) = 0;
 };
 
 class ComputerDateFormatter : public DateFormatter
 {
   public:
-    virtual string format(Date &date); //Fryzu
+    virtual std::string format(Date &date); //Fryzu
 };
 
 class GermanDateFormatter : public DateFormatter
 {
   public:
-    virtual string format(Date &date); //Pietro
+    virtual std::string format(Date &date); //Pietro
 };
 
 //ComputerDateFormatter cdf;

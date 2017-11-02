@@ -3,6 +3,8 @@
 
 //Metody Bartka
 
+static const int monthDate[12] = {31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334, 365};
+/*
 Date &Date::operator=(const Date &toCopy)
 {
     this->unixDays = toCopy.unixDays;
@@ -126,3 +128,4 @@ string GermanDateFormatter::format(Date &date)
     result = day + month + year;
     return result;
 }
+*/
