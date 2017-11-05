@@ -58,8 +58,8 @@ Date::Date(int year, int month, int day)
     if (month == 1)
         y = 0;
     else
-        y = month - 2;
-    unixDays = ((year - 1970) * 365 + day + monthDate[y]);
+        y = monthDate[month - 2];
+    unixDays = ((year - 1970) * 365 + day + y);
 }
 
 const Date operator-(const Date &D, int n)
@@ -122,8 +122,8 @@ string GermanDateFormatter::format(Date &date)
             }
     }
     if (months < 10)
-        month = '.0' + to_string(months); 
-    else 
+        month = '.0' + to_string(months);
+    else
         month = '.' + to_string(months);
 
     unsigned int days = date.unixDays - ((years - 1970) * yearLength + monthDate[i - 1]);
