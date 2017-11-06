@@ -8,10 +8,50 @@ int main(int argc, char* argv[])
     return RUN_ALL_TESTS();
 }
 
-Date testDate1;
-Date testDate2;
-
 TEST(DateTest, StartingValue)
 {
+    Date testDate1;
+    Date testDate2;
+
     EXPECT_EQ(0, testDate1.getUnixDays());
+}
+
+//TESTY BARTKA
+
+TEST(DateTest, OperatorAssign)
+{
+    Date testDate1(10, 20, 30);
+    Date testDate2 = testDate1;
+
+    EXPECT_EQ(testDate1.getUnixDays(), testDate2.getUnixDays());
+}
+
+TEST(DateTest, OperatorPlus)
+{
+    Date testDate1(0, 0, 10);
+
+    int testValue = 10;
+    int expectedResult = testValue + testDate1.getUnixDays();
+    
+    testDate1 = testValue + testDate1;
+
+    EXPECT_EQ(expectedResult, testDate1.getUnixDays());
+}
+
+TEST(DateTest, OperatorOutStream)
+{
+    Date testDate1(0, 0, 30);
+    std::ostringstream os;
+    os << testDate1;
+
+    EXPECT_EQ("30", os.str());
+}
+
+TEST(DateTest, ComputerDateFormatter)
+{
+    Date testDate1(1, 2, 3);
+
+    ComputerDateFormatter formatter;
+
+    EXPECT_EQ("1-2-3", formatter.format(testDate1));
 }
