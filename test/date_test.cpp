@@ -24,6 +24,8 @@ TEST(DateTest, OperatorAssign)
     Date testDate2 = testDate1;
 
     EXPECT_EQ(testDate1.getUnixDays(), testDate2.getUnixDays());
+    
+    
 }
 
 TEST(DateTest, OperatorPlus)
@@ -36,6 +38,8 @@ TEST(DateTest, OperatorPlus)
     testDate1 = testValue + testDate1;
 
     EXPECT_EQ(expectedResult, testDate1.getUnixDays());
+    
+    
 }
 
 TEST(DateTest, OperatorOutStream)
@@ -55,3 +59,29 @@ TEST(DateTest, ComputerDateFormatter)
 
     EXPECT_EQ("1-2-3", formatter.format(testDate1));
 }
+//MrauMrauChan
+
+TEST(DateTest,OperatorMinus)
+{
+		EXPECT_EQ(Date(1997,6,1)-1,Date(1997,5,31));
+		EXPECT_EQ(Date(1997,1,1)-1,Date(1996,12,31));
+		EXPECT_EQ(Date(1997,12,1)-1,Date(1997,11,30));
+	
+}
+
+TEST(DateTest,Konstruktory)
+{
+	EXPECT_EQ(Date(1997,5,20),Date(1997,5,20));
+	EXPECT_EQ(Date(),Date(0));
+
+}
+
+TEST(DateTest,OperatorRozny)
+{
+	EXPECT_NE(Date(1996,6,31),Date(1997,6,31));
+	EXPECT_NE(Date(1997,6,31),Date(1997,4,31));
+	EXPECT_NE(Date(1997,6,30),Date(1997,6,31));
+	EXPECT_NE(Date(232323),Date(1997,6,31));
+
+}
+
