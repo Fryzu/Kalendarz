@@ -99,39 +99,49 @@ bool operator!=(const Date &D1, const Date &D2)
     if (D1.unixDays != D2.unixDays)
         return 1; else return 0;
 }
-
-/* coś nie smiga i nie chce sie kompilowac
-string GermanDateFormatter::format(Date &date)
+//Pray for this code
+std:: string GermanDateFormatter::format(Date &date)
 {
-    string result;
+
+    std::string result;
     const int yearLength = 365;
+    unsigned int years = 1970 + ((date.getUnixDays() - date.getUnixDays() % yearLength) / yearLength);
+//---------------------------------------
+    std::stringstream ss;
+    ss << years;
+    std::string str = ss.str();
 
-    unsigned int years = 1970 + ((unixDays - unixDays % yearLength) / yearLength)
-                                    string year = '.' + to_string(years);
-
+    std::string year = "." + str;
+//---------------------------------------
     int months;
+    int i;
 
-    std::string month;
 
-    for (int i = 1; i < 13; i++)
+    for ( i = 1; i < 13; i++)
     {
-        if (date.unixDays - yearLength * years)<=monthDate[i])
+        if ((date.getUnixDays() - (yearLength * years))<=monthDate[i])
             {
                 months = i;
                 break;
             }
     }
+    std::string month;
+//-------------------------------------
+    ss << months;
+    str = ss.str();
+//-------------------------------------
     if (months < 10)
-        month = '.0' + to_string(months);
+         month = ".0" + str;
     else
-        month = '.' + to_string(months);
+         month = "." + str;
 
-    unsigned int days = date.unixDays - ((years - 1970) * yearLength + monthDate[i - 1]);
+    unsigned int days = date.getUnixDays() - ((years - 1970 * yearLength) + monthDate[i - 1]);
 
-    string day;
+    std::string day;
+    ss<<days;
+    str=ss.str();
     if (days < 10)
-        day = '0' + to_string(days) else day = to_string(days);
+        day = "0" + str; else day = str;
     result = day + month + year;
     return result;
 }
-*/
