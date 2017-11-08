@@ -70,8 +70,8 @@ TEST(DateTest, GermanDateFormatter)
 
     GermanDateFormatter formatter;
 
-    EXPECT_EQ("18.5.1997", formatter.format(testDate1));
-    EXPECT_EQ("1.1.1970", formatter.format(testDate2));
+    EXPECT_EQ("18.05.1997", formatter.format(testDate1));
+    EXPECT_EQ("01.01.1970", formatter.format(testDate2));
     EXPECT_EQ("30.12.2016", formatter.format(testDate3));  
 }
 //MrauMrauChan

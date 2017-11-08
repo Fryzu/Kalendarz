@@ -105,9 +105,9 @@ bool operator!=(const Date &D1, const Date &D2)
 std:: string GermanDateFormatter::format(Date &date)
 {
 
-    std::string result,result,year,month,day;
+    std::string result,year,month,day;
     const int yearLength = 365;
-    unsigned int dateDays=date.getUnixDays()
+    unsigned int dateDays=date.getUnixDays();
     unsigned int years = 1970 + ((dateDays - dateDays % yearLength) / yearLength);
 
     std::stringstream ss;
