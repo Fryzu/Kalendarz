@@ -52,19 +52,27 @@ TEST(DateTest, OperatorOutStream)
 TEST(DateTest, ComputerDateFormatter)
 {
     Date testDate1(1997, 5, 18);
+    Date testDate2(1970, 1, 1);
+    Date testDate3(2016, 12, 30);
 
     ComputerDateFormatter formatter;
 
     EXPECT_EQ("1997-5-18", formatter.format(testDate1));
+    EXPECT_EQ("1970-1-1", formatter.format(testDate2));
+    EXPECT_EQ("2016-12-30", formatter.format(testDate3));
 }
 
 TEST(DateTest, GermanDateFormatter)
 {
     Date testDate1(1997, 5, 18);
+    Date testDate2(1970, 1, 1);
+    Date testDate3(2016, 12, 30);
 
     GermanDateFormatter formatter;
 
-    EXPECT_EQ("18-5-1997", formatter.format(testDate1));
+    EXPECT_EQ("18.5.1997", formatter.format(testDate1));
+    EXPECT_EQ("1.1.1970", formatter.format(testDate2));
+    EXPECT_EQ("30.12.2016", formatter.format(testDate3));  
 }
 //MrauMrauChan
 
