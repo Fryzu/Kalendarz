@@ -20,44 +20,51 @@ TEST(DateTest, StartingValue)
 
 TEST(DateTest, OperatorAssign)
 {
-    Date testDate1(10, 20, 30);
+    Date testDate1(1997, 5, 18);
     Date testDate2 = testDate1;
 
-    EXPECT_EQ(testDate1.getUnixDays(), testDate2.getUnixDays());
-    
-    
+    EXPECT_EQ(testDate1.getUnixDays(), testDate2.getUnixDays()); 
 }
 
 TEST(DateTest, OperatorPlus)
 {
-    Date testDate1(0, 0, 10);
+    Date testDate1(1997, 5, 18);
 
     int testValue = 10;
     int expectedResult = testValue + testDate1.getUnixDays();
     
     testDate1 = testValue + testDate1;
 
-    EXPECT_EQ(expectedResult, testDate1.getUnixDays());
-    
-    
+    EXPECT_EQ(expectedResult, testDate1.getUnixDays()); 
 }
 
 TEST(DateTest, OperatorOutStream)
 {
-    Date testDate1(0, 0, 30);
+    Date testDate1(1997, 5, 18);
     std::ostringstream os;
     os << testDate1;
+    std::stringstream unixDays; 
+    unixDays << testDate1.getUnixDays();
 
-    EXPECT_EQ("30", os.str());
+    EXPECT_EQ(unixDays.str(), os.str());
 }
 
 TEST(DateTest, ComputerDateFormatter)
 {
-    Date testDate1(1, 2, 3);
+    Date testDate1(1997, 5, 18);
 
     ComputerDateFormatter formatter;
 
-    EXPECT_EQ("1-2-3", formatter.format(testDate1));
+    EXPECT_EQ("1997-5-18", formatter.format(testDate1));
+}
+
+TEST(DateTest, GermanDateFormatter)
+{
+    Date testDate1(1997, 5, 18);
+
+    GermanDateFormatter formatter;
+
+    EXPECT_EQ("18-5-1997", formatter.format(testDate1));
 }
 //MrauMrauChan
 

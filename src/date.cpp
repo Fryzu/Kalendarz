@@ -1,5 +1,6 @@
 #include "date.h"
 #include <iostream>
+#include <sstream>
 
 //Metody Bartka
 
@@ -22,32 +23,33 @@ const Date operator+(int dateInteger, const Date &dateObject)
 
 std::ostream &operator<<(std::ostream &os, const Date &dateObject)
 {
-    os << dateObject.unixDays << std::endl;
+    os << dateObject.unixDays;
 
     return os;
 }
 
 std::string ComputerDateFormatter::format(Date &date)
 {
-    std::string result;
-    result = date.getUnixDays() / 365;
-    result += "-";
+    std::stringstream result;
+    result << (date.getUnixDays()/365 + 1970);
+    result << "-";
 
     int dateDays = date.getUnixDays() % 365;
     for (int i = 0; i < 12; i++)
     {
         if (dateDays < monthDate[i])
         {
-            result += i + 1;
-            result += "-";
+            result << i + 1;
+            result << "-";
             if (i == 1)
-                result += dateDays;
+                result << dateDays;
             else
-                result += dateDays - monthDate[i - 1];
+                result << (dateDays - monthDate[i - 1]);
+            break;
         }
     }
 
-    return result;
+    return result.str();
 }
 
 //Metody MrauMrauChan
