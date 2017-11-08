@@ -105,45 +105,50 @@ bool operator!=(const Date &D1, const Date &D2)
 std:: string GermanDateFormatter::format(Date &date)
 {
 
-    std::string result;
+    std::string result,result,year,month,day;
     const int yearLength = 365;
-    unsigned int years = 1970 + ((date.getUnixDays() - date.getUnixDays() % yearLength) / yearLength);
-//---------------------------------------
+    unsigned int dateDays=date.getUnixDays()
+    unsigned int years = 1970 + ((dateDays - dateDays % yearLength) / yearLength);
+
     std::stringstream ss;
     ss << years;
     std::string str = ss.str();
 
-    std::string year = "." + str;
-//---------------------------------------
-    int months;
-    int i;
+    year = "." + str;
 
+    int months=13;
+    int i=0;
+	dateDays=dateDays-(yearLength * (years-1970));
 
-    for ( i = 1; i < 13; i++)
-    {
-        if ((date.getUnixDays() - (yearLength * years))<=monthDate[i])
+    while(months==13)
+   {
+
+        if (dateDays<=monthDate[i])
             {
-                months = i;
-                break;
-            }
-    }
-    std::string month;
-//-------------------------------------
+                months = i+1;
+            };
+        i++;
+    };
+
+    ss.str(""); //CUDA z SSTREAM
+    ss.clear();
     ss << months;
-    str = ss.str();
-//-------------------------------------
+    month = ss.str();
+	
+
     if (months < 10)
-         month = ".0" + str;
+         month = ".0" + month;
     else
-         month = "." + str;
+         month = "." + month;
 
-    unsigned int days = date.getUnixDays() - ((years - 1970 * yearLength) + monthDate[i - 1]);
+    dateDays = dateDays-monthDate[i-2];
 
-    std::string day;
-    ss<<days;
-    str=ss.str();
-    if (days < 10)
-        day = "0" + str; else day = str;
+    ss.str(""); //CUDA z SSTREAM
+    ss.clear();
+    ss<<dateDays;
+    day=ss.str();
+
+    if (dateDays < 10) day = "0" + day;
     result = day + month + year;
     return result;
 }
